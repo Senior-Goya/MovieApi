@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MoviesAPI.Entities;
 
 namespace MoviesAPI.Controllers
 {
@@ -10,6 +11,12 @@ namespace MoviesAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IRepository _repository;
+
+        public ValuesController(IRepository repository)
+        {
+            _repository = repository;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
